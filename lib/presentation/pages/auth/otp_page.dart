@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:wintermar/presentation/pages/auth/components/resend_code_widgets.dart';
 
 @RoutePage()
 class OTPPage extends StatelessWidget {
@@ -7,6 +8,10 @@ class OTPPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: Center(
+        child: ResendCodeWidgets(),
+      ),
+    );
   }
 }

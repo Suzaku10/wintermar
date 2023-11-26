@@ -27,5 +27,6 @@
   "login_now": "Login Now",
   "register_now": "Register Now",
   "greetings": "Hei,",
-  "welcome": "Welcome"
+  "welcome": "Welcome",
+  "resend_code": "Resend Code"
 }

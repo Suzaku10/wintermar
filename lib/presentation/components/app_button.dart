@@ -12,9 +12,10 @@ class AppButton {
     EdgeInsets? padding,
     double? textSize,
     double? radius,
+    bool enabled = true,
   }) {
     return ElevatedButton(
-        onPressed: onPressed,
+        onPressed: enabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius ?? 8)),
             backgroundColor: color ?? AppColors.primary,
@@ -39,9 +40,10 @@ class AppButton {
     Color? color,
     EdgeInsets? padding,
     double? textSize,
+    bool enabled = true,
   }) {
     return ElevatedButton(
-        onPressed: onPressed,
+        onPressed: enabled ? onPressed : null,
         style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
             backgroundColor: color ?? AppColors.white,
@@ -55,6 +57,34 @@ class AppButton {
                   style: textSize != null ? AppStyles.textXs.semiBold.primary.copyWith(fontSize: textSize) : AppStyles.textMd.semiBold.primary),
             ),
             if (assets != null) SvgPicture.asset(assets, color: AppColors.primary, width: textSize, height: textSize)
+          ],
+        ));
+  }
+
+  static Widget text({
+    required String title,
+    VoidCallback? onPressed,
+    String? assets,
+    Color? color,
+    EdgeInsets? padding,
+    double? textSize,
+    double? radius,
+    bool enabled = true,
+  }) {
+    return TextButton(
+        onPressed: enabled ? onPressed : null,
+        style: TextButton.styleFrom(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            elevation: 0,
+            padding: padding ?? const EdgeInsets.symmetric(vertical: 16, horizontal: 16)),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(title,
+                  textAlign: TextAlign.center,
+                  style: textSize != null ? AppStyles.textXs.semiBold.copyWith(fontSize: textSize) : AppStyles.textMd.semiBold),
+            ),
+            if (assets != null) SvgPicture.asset(assets)
           ],
         ));
   }

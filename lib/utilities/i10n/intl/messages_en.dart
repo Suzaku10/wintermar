@@ -45,6 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "register_info": MessageLookupByLibrary.simpleMessage(
             "Please Login/Register to Continue"),
         "register_now": MessageLookupByLibrary.simpleMessage("Register Now"),
+        "resend_code": MessageLookupByLibrary.simpleMessage("Resend Code"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
         "validator_confirm_password_empty":
             MessageLookupByLibrary.simpleMessage(

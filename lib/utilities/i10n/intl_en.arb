@@ -28,5 +28,16 @@
   "register_now": "Register Now",
   "greetings": "Hei,",
   "welcome": "Welcome",
-  "resend_code": "Resend Code"
+  "resend_code": "Resend Code",
+  "enter_authentication_code": "Enter authentication code",
+  "otp_info": "Enter the {otp_digit}-digit that we have sent via the phone number to",
+  "@otp_info": {
+    "description": "OTP Digit info",
+    "placeholders": {
+      "otp_digit": {
+        "type": "int",
+        "example": "6"
+      }
+    }
+  }
 }

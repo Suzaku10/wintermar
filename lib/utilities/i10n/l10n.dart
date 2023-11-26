@@ -349,6 +349,26 @@ class I10n {
       args: [],
     );
   }
+
+  /// `Enter authentication code`
+  String get enter_authentication_code {
+    return Intl.message(
+      'Enter authentication code',
+      name: 'enter_authentication_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the {otp_digit}-digit that we have sent via the phone number to`
+  String otp_info(int otp_digit) {
+    return Intl.message(
+      'Enter the $otp_digit-digit that we have sent via the phone number to',
+      name: 'otp_info',
+      desc: 'OTP Digit info',
+      args: [otp_digit],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

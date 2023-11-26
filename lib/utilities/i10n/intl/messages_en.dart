@@ -20,11 +20,16 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(otp_digit) =>
+      "Enter the ${otp_digit}-digit that we have sent via the phone number to";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "enter_authentication_code":
+            MessageLookupByLibrary.simpleMessage("Enter authentication code"),
         "greetings": MessageLookupByLibrary.simpleMessage("Hei,"),
         "have_account":
             MessageLookupByLibrary.simpleMessage("Already have account?"),
@@ -39,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_now": MessageLookupByLibrary.simpleMessage("Login Now"),
         "no_account":
             MessageLookupByLibrary.simpleMessage("Didn\'t have account?"),
+        "otp_info": m0,
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),

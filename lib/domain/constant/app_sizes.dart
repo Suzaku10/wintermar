@@ -6,6 +6,7 @@ double defaultScreenHeight = 810;
 double screenWidth = defaultScreenWidth;
 double screenHeight = defaultScreenHeight;
 double defaultSizeIcon = 24;
+int defaultTimer = 30;
 
 class AppSizes {
   static double appScreenWidth = screenWidth;

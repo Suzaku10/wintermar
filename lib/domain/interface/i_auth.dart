@@ -1,13 +1,13 @@
+import 'package:wintermar/domain/request/user_request.dart';
+
 abstract interface class IAuth {
-  Future<bool> doLogin();
+  Future<bool> doLogin({required UserRequest request});
 
   Future<bool> doLogout();
 
-  Future<bool> doRegister();
+  Future<bool> doRegister({required UserRequest request});
 
-  Future<bool> doOTP();
+  Future<bool> doOTP({required String otp, required UserRequest request});
 
-  Future<bool> saveCredential();
-
-  Future<bool> removeCredential();
+  String username();
 }

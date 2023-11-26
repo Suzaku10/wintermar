@@ -24,15 +24,16 @@ class _OTPWidgetsState extends State<OTPWidgets> {
   late List<Widget> otpWidgets;
   late List<FocusNode?> focusNodes;
 
-  String _result = '';
+  late List<String> _result;
 
   @override
   void initState() {
     _borderColor = widget.borderColor ?? AppColors.primary;
     controllers = List.generate(widget.otpDigit, (index) => TextEditingController(), growable: false);
-    focusNodes = List.generate(widget.otpDigit, (index) => FocusNode());
-    otpWidgets = List.generate(widget.otpDigit, (index) => Flexible(child: _otpArea(index)));
+    focusNodes = List.generate(widget.otpDigit, (index) => FocusNode(), growable: false);
+    otpWidgets = List.generate(widget.otpDigit, (index) => Flexible(child: _otpArea(index)), growable: false);
     focusNodes.firstOrNull?.requestFocus();
+    _result = List.generate(widget.otpDigit, (index) => "", growable: false);
     super.initState();
   }
 
@@ -78,6 +79,7 @@ class _OTPWidgetsState extends State<OTPWidgets> {
           maxLength: 1,
           focusNode: focusNodes[index],
           keyboardType: TextInputType.number,
+          onTap: () => _handleTapOnEmptyFocus(index),
           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
           onChanged: (value) => _handleOnChange(value, index),
           decoration: InputDecoration(
@@ -119,13 +121,30 @@ class _OTPWidgetsState extends State<OTPWidgets> {
 
   void _handleOnChange(String value, int index) {
     if (value.isNotEmpty) {
-      _result += value;
+      _result[index] = value;
       if (index < focusNodes.length - 1) focusNodes[index + 1]?.requestFocus();
     } else {
-      _result = _result.substring(0, _result.length - 1);
-      if (index != 0) focusNodes[index - 1]?.requestFocus();
+      _result[index] = value;
+      if (index != 0) {
+        if (index == focusNodes.length -1) {
+          focusNodes[index]?.requestFocus();
+        } else {
+          focusNodes[index - 1]?.requestFocus();
+        }
+      }
     }
 
-    widget.callback(_result);
+    final tempResult = _result.toList(growable: true);
+    tempResult.removeWhere((element) => element.isEmpty);
+
+    widget.callback(tempResult.join(''));
+  }
+
+  void _handleTapOnEmptyFocus(int index) {
+    if (_result.every((element) => element.isEmpty)) {
+      focusNodes.firstOrNull?.requestFocus();
+    } else {
+      focusNodes[_result.lastIndexWhere((element) => element.isNotEmpty) + 1]?.requestFocus();
+    }
   }
 }

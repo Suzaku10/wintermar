@@ -10,8 +10,9 @@ class OTPWidgets extends StatefulWidget {
   final int otpDigit;
   final OTPShape otpShape;
   final Color? borderColor;
+  final Function(String otp) callback;
 
-  const OTPWidgets({super.key, required this.phoneNumber, this.otpDigit = 6, this.otpShape = OTPShape.box, this.borderColor});
+  const OTPWidgets({super.key, required this.phoneNumber, this.otpDigit = 6, this.otpShape = OTPShape.box, this.borderColor, required this.callback});
 
   @override
   State<OTPWidgets> createState() => _OTPWidgetsState();
@@ -68,29 +69,25 @@ class _OTPWidgetsState extends State<OTPWidgets> {
       height: 60,
       width: 60,
       alignment: Alignment.center,
-      child: TextField(
-        controller: controllers[index],
-        textAlign: TextAlign.center,
-        maxLength: 1,
-        focusNode: focusNodes[index],
-        keyboardType: TextInputType.number,
-        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        onChanged: (v) {
-          if (v.isNotEmpty) {
-            _result += v;
-            if (index < focusNodes.length - 1) focusNodes[index + 1]?.requestFocus();
-          } else {
-            _result = _result.substring(0, _result.length - 1);
-            if (index != 0) focusNodes[index - 1]?.requestFocus();
-          }
-        },
-        decoration: InputDecoration(
-          counterText: "",
-          contentPadding: EdgeInsets.zero,
-          enabledBorder: _border,
-          focusedBorder: _border,
-          errorBorder: _border,
-          border: _border,
+      child: RawKeyboardListener(
+        focusNode: FocusNode(),
+        onKey: (key) => _handleBackSpace(key, index),
+        child: TextField(
+          controller: controllers[index],
+          textAlign: TextAlign.center,
+          maxLength: 1,
+          focusNode: focusNodes[index],
+          keyboardType: TextInputType.number,
+          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+          onChanged: (value) => _handleOnChange(value, index),
+          decoration: InputDecoration(
+            counterText: "",
+            contentPadding: EdgeInsets.zero,
+            enabledBorder: _border,
+            focusedBorder: _border,
+            errorBorder: _border,
+            border: _border,
+          ),
         ),
       ),
     );
@@ -109,5 +106,26 @@ class _OTPWidgetsState extends State<OTPWidgets> {
     } else {
       return InputBorder.none;
     }
+  }
+
+  void _handleBackSpace(RawKeyEvent key, int index) {
+    if (key.isKeyPressed(LogicalKeyboardKey.backspace) || key.isKeyPressed(LogicalKeyboardKey.delete)) {
+      if (index != 0) {
+        controllers[index - 1].clear();
+        focusNodes[index - 1]?.requestFocus();
+      }
+    }
+  }
+
+  void _handleOnChange(String value, int index) {
+    if (value.isNotEmpty) {
+      _result += value;
+      if (index < focusNodes.length - 1) focusNodes[index + 1]?.requestFocus();
+    } else {
+      _result = _result.substring(0, _result.length - 1);
+      if (index != 0) focusNodes[index - 1]?.requestFocus();
+    }
+
+    widget.callback(_result);
   }
 }

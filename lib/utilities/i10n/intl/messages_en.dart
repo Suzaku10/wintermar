@@ -41,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "hint_phone_number":
             MessageLookupByLibrary.simpleMessage("08123456789"),
         "hint_username": MessageLookupByLibrary.simpleMessage("Input Username"),
+        "invalid_otp_code":
+            MessageLookupByLibrary.simpleMessage("Invalid OTP Code"),
         "login_now": MessageLookupByLibrary.simpleMessage("Login Now"),
         "no_account":
             MessageLookupByLibrary.simpleMessage("Didn\'t have account?"),
@@ -52,7 +54,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please Login/Register to Continue"),
         "register_now": MessageLookupByLibrary.simpleMessage("Register Now"),
         "resend_code": MessageLookupByLibrary.simpleMessage("Resend Code"),
+        "send_otp": MessageLookupByLibrary.simpleMessage("Send OTP"),
+        "something_error":
+            MessageLookupByLibrary.simpleMessage("Something Error"),
         "username": MessageLookupByLibrary.simpleMessage("Username"),
+        "username_already_exist":
+            MessageLookupByLibrary.simpleMessage("Username Already Exist"),
         "validator_confirm_password_empty":
             MessageLookupByLibrary.simpleMessage(
                 "Password Confirmation cannot be empty"),

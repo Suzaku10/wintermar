@@ -3,13 +3,18 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:wintermar/application/auth_store.dart';
 import 'package:wintermar/domain/constant/app_assets.dart';
 import 'package:wintermar/domain/constant/app_pages.dart';
 import 'package:wintermar/domain/constant/app_text_styles.dart';
+import 'package:wintermar/domain/request/user_request.dart';
 import 'package:wintermar/presentation/components/app_button.dart';
 import 'package:wintermar/presentation/components/app_text_field.dart';
 import 'package:wintermar/presentation/pages/auth/components/greeting_widgets.dart';
 import 'package:wintermar/utilities/i10n/l10n.dart';
+import 'package:wintermar/utilities/injection/injection.dart';
+import 'package:wintermar/utilities/router/app_router.dart';
+import 'package:wintermar/utilities/utilities.dart';
 import 'package:wintermar/utilities/validator/input_validator.dart';
 
 @RoutePage()
@@ -21,6 +26,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final AuthStore _authStore = getIt<AuthStore>();
+
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -94,7 +101,12 @@ class _LoginPageState extends State<LoginPage> {
 
   void _doLogin() async {
     try {
-      if (_formKey.currentState!.validate()) {}
+      if (_formKey.currentState!.validate()) {
+        showLoading();
+        final response = await _authStore.login(UserRequest('', _usernameController.text, _passwordController.text, ''));
+        dismissLoading();
+        if (response) context.router.replaceAll([const HomeRoute()]);
+      }
     } catch (e) {
       EasyLoading.showError(e.toString());
     }

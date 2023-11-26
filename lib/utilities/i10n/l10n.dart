@@ -369,6 +369,46 @@ class I10n {
       args: [otp_digit],
     );
   }
+
+  /// `Send OTP`
+  String get send_otp {
+    return Intl.message(
+      'Send OTP',
+      name: 'send_otp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Invalid OTP Code`
+  String get invalid_otp_code {
+    return Intl.message(
+      'Invalid OTP Code',
+      name: 'invalid_otp_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something Error`
+  String get something_error {
+    return Intl.message(
+      'Something Error',
+      name: 'something_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Username Already Exist`
+  String get username_already_exist {
+    return Intl.message(
+      'Username Already Exist',
+      name: 'username_already_exist',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {

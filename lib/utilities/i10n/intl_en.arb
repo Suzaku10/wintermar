@@ -39,5 +39,9 @@
         "example": "6"
       }
     }
-  }
+  },
+  "send_otp": "Send OTP",
+  "invalid_otp_code": "Invalid OTP Code",
+  "something_error": "Something Error",
+  "username_already_exist": "Username Already Exist"
 }

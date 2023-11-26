@@ -1,0 +1,47 @@
+{
+  "username": "Username",
+  "email": "Email",
+  "password": "Password",
+  "confirm_password": "Confirm Password",
+  "phone_number": "Phone Number",
+  "register": "Register",
+  "hint_username": "Input Username",
+  "hint_email": "jhon.doe@example.com",
+  "hint_phone_number": "08123456789",
+  "hint_password": "Input Password",
+  "hint_confirm_password": "Retype Password",
+  "validator_name_empty": "Username cannot be empty",
+  "validator_name_limit": "Username must be 3 character or max 50 character",
+  "validator_email_empty": "Email cannot be empty",
+  "validator_email_invalid": "Email not valid",
+  "validator_phone_number_empty": "Phone Number cannot be empty",
+  "validator_phone_number_invalid": "Phone Number not valid",
+  "validator_password_empty": "Password cannot be empty",
+  "validator_password_limit": "Password must be more than 8 character",
+  "validator_password_invalid": "Password must contains number, symbol, lowercase character, and uppercase character",
+  "validator_confirm_password_empty": "Password Confirmation cannot be empty",
+  "validator_confirm_password_not_match": "Password Confirmation didn't match",
+  "register_info": "Please Login/Register to Continue",
+  "no_account": "Didn't have account?",
+  "have_account": "Already have account?",
+  "login_now": "Login Now",
+  "register_now": "Register Now",
+  "greetings": "Hei,",
+  "welcome": "Welcome",
+  "resend_code": "Resend Code",
+  "enter_authentication_code": "Enter authentication code",
+  "otp_info": "Enter the {otp_digit}-digit that we have sent via the phone number to",
+  "@otp_info": {
+    "description": "OTP Digit info",
+    "placeholders": {
+      "otp_digit": {
+        "type": "int",
+        "example": "6"
+      }
+    }
+  },
+  "send_otp": "Send OTP",
+  "invalid_otp_code": "Invalid OTP Code",
+  "something_error": "Something Error",
+  "username_already_exist": "Username Already Exist"
+}

@@ -72,7 +72,7 @@ class _OTPPageState extends State<OTPPage> {
       showLoading();
       final response = await _authStore.sendOTP(_otpCode);
       dismissLoading();
-      if (response) context.router.replaceAll([const HomeRoute()]);
+      if (response) context.router.replaceAll([const LoginRoute()]);
     } catch (e) {
       showError(e);
     }

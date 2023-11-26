@@ -46,9 +46,11 @@ class _ResendCodeWidgetsState extends State<ResendCodeWidgets> {
   void _resetTimer() {
     if (timer?.isActive == true) return;
     _remainingTime = defaultTimer;
+    showLoading();
 
     /// TODO: Mock API Request using future delayed before set timer
     Future.delayed(const Duration(seconds: 1)).then((value) {
+      dismissLoading();
       timer = Timer.periodic(const Duration(seconds: 1), (_) {
         if (_remainingTime >= 0) {
           setState(() {

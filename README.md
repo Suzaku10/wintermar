@@ -1,17 +1,23 @@
 # wintermar
 
-wintermar otp challange
+Wintermar OTP challange Take Home Test
 
-## Getting Started
+### Project Requirement :
+1.  Flutter version 3.13.1
+2.  Dart version 3.1.0
 
-This project is a starting point for a Flutter application.
+### Folder Structure
+Using [DDD](https://resocoder.com/2020/03/09/flutter-firebase-ddd-course-1-domain-driven-design-principles/) design pattern but not strict.
+- lib/application => for logic/store
+- lib/domain => for model, constant, or interface
+- lib/infrastructure => for implementation of interface
+- lib/presentation => for component, UI, or page
+- lib/utilities => for utilities
+- lib/utilities/i10n => for localization (intl_en.arb for english translation) 
 
-A few resources to get you started if this is your first Flutter project:
+## Find Me on :
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [linkedIn](https://www.linkedin.com/in/yudhistira-yoga-0872a6184)
+- [Email](mailto:Yudhistiray198@gmail.com)
+- [Github](https://github.com/Suzaku10)
 # wintermar

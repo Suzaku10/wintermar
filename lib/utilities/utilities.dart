@@ -15,3 +15,8 @@ Future<void> setStatusBarAndOrientation() async {
 }
 
 String generateId() => getIt<Uuid>().v4();
+
+bool isValidEmail(String email) {
+  return RegExp(r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+      .hasMatch(email);
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wintermar/domain/constant/app_sizes.dart';
 import 'package:wintermar/domain/constant/app_text_styles.dart';
 
@@ -11,6 +12,7 @@ class AppTextField {
     Widget? prefixIcon,
     Widget? suffixIcon,
     Widget? secondaryLabel,
+    TextInputType? inputType,
     required String? Function(String? value) validator,
   }) {
     return Column(
@@ -32,6 +34,12 @@ class AppTextField {
           obscureText: obscure,
           style: AppStyles.textSm.bold.primary,
           validator: validator,
+          inputFormatters: [
+            if (inputType == TextInputType.number || inputType == TextInputType.phone || inputType == const TextInputType.numberWithOptions()) ...[
+              FilteringTextInputFormatter.digitsOnly
+            ]
+          ],
+          keyboardType: inputType,
           decoration: InputDecoration(
             errorMaxLines: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 16),
